@@ -26,9 +26,6 @@ class Config(BaseModel):
             options.set_capability('remote_url', self.remote_url)
             options.set_capability('appWaitActivity', self.appWaitActivity)
             options.set_capability('app', self.app_local)
-            options.set_capability('appName', self.appName)
-            options.set_capability('platfornName', self.platformName)
-            options.set_capability('platformVersion', self.platformVersion)
 
         if context == 'real_local':
             options.set_capability('remote_url', self.remote_url)
