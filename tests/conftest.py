@@ -1,6 +1,7 @@
+import os
+from pathlib import Path
 import allure
 import pytest
-
 from selene import browser
 from appium import webdriver
 from selene_in_action import utils
@@ -17,8 +18,9 @@ def pytest_addoption(parser):
 
 def pytest_configure(config):
     context = config.getoption('--context')
-    env_file_path = f'.env.{context}'
-    load_dotenv(env_file_path)
+    current_dir = Path(__file__).parent.parent
+    env_file = os.path.join(current_dir, f'.env.{context}')
+    load_dotenv(env_file)
 
 
 @pytest.fixture(scope='function', autouse=True)

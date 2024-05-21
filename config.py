@@ -9,7 +9,7 @@ class Config(BaseModel):
     context: str
     remote_url: str = os.getenv('REMOTE_URL')
     device_name: str = os.getenv('DEVICE_NAME')
-    udid: str = os.getenv('UDID')
+    appName: str = os.getenv('APP_NAME')
     appWaitActivity: str = os.getenv('APP_WAIT_ACTIVITY')
     app_local: str = utils.file.abs_path_from_project(os.getenv('APP'))
     app_bstack: str = os.getenv('APP')
@@ -26,6 +26,9 @@ class Config(BaseModel):
             options.set_capability('remote_url', self.remote_url)
             options.set_capability('appWaitActivity', self.appWaitActivity)
             options.set_capability('app', self.app_local)
+            options.set_capability('appName', self.appName)
+            options.set_capability('platfornName', self.platformName)
+            options.set_capability('platformVersion', self.platformVersion)
 
         if context == 'real_local':
             options.set_capability('remote_url', self.remote_url)
