@@ -23,6 +23,11 @@ def pytest_configure(config):
     load_dotenv(env_file)
 
 
+@pytest.fixture
+def context(request):
+    return request.config.getoption('--context')
+
+
 @pytest.fixture(scope='function', autouse=True)
 def android_mobile_management(context):
     from config import config
